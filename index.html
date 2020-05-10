@@ -6,22 +6,23 @@
     <title>JS Pokedex</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="center">
     <div id="pokedex">
-      <input type="text" id="searchbar" />
-      <div class="top-controls">
-        <a class="arrow left-arrow"></a>
+      <div id="search" class="center">
+        <input type="text" id="searchbar" placeholder="Look for a mon" />
+        <a id="searchButton" class="center">&#128269;</a>
+      </div>
+      <div id="topControls" class="center">
+        <a class="arrow left-arrow">&#8592;</a>
         <a href="" class="color normal">Normal</a>
         <a href="" class="color shiny">Shiny</a>
-        <a class="arrow right-arrow"></a>
+        <a class="arrow right-arrow">&#8594;</a>
       </div>
       <div id="pokeImgContainer"><img alt="" id="pokeImg" /></div>
-      <p id="name-number">
+      <p id="nameNumber">
         &#35;<span id="pokeNum"></span> <span id="pokeName">Pikachu</span>
       </p>
-      <p id="types">
-        <span id="type1">Electric</span> <span id="type2">Electric</span>
-      </p>
+      <p id="types"><span id="type1"></span> <span id="type2"></span></p>
       <p id="flavorText">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, quas.
       </p>
