@@ -65,6 +65,7 @@ a:hover {
   border: solid 1px black;
   font-size: 0.7rem;
   padding: 5px 0;
+  color: black;
 }
 #topControls {
   text-align: center;
@@ -78,9 +79,16 @@ a:hover {
   background: white;
   height: 100px;
 }
+#pokeImg {
+  width: 100px;
+  height: 100px;
+}
 
 #nameNumber {
   text-align: center;
+}
+#pokeName {
+  text-transform: capitalize;
 }
 
 #types {
