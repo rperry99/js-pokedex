@@ -18,16 +18,7 @@ fetch(url)
   })
   .then(function (pokemon) {
     // Do the thing
-    console.log(pokemon.name);
-    pokeNum.innerHTML = "#" + pokemon.order;
-    pokeName.innerHTML = pokemon.name;
-    pokeImg.src = pokemon.sprites.front_default;
-
-    leftArrow.onclick = function () {
-      pokemon.order -= 1;
-      url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.order;
-      console.log(url);
-    };
+    setPokemon(pokemon);
 
     normalColor.onclick = function () {
       pokeImg.src = pokemon.sprites.front_default;
@@ -42,4 +33,10 @@ fetch(url)
 
 function get(element) {
   return document.getElementById(element);
+}
+
+function setPokemon(mon) {
+  pokeNum.innerHTML = "#" + mon.order;
+  pokeName.innerHTML = mon.name;
+  pokeImg.src = mon.sprites.front_default;
 }
