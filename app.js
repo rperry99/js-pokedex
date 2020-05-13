@@ -1,5 +1,5 @@
 let baseUrl = "https://pokeapi.co/api/v2/pokemon/";
-let startingUrl = baseUrl + "3";
+let startingUrl = baseUrl + "1";
 let currentMonNum;
 
 const pokeNum = get("pokeNum");
@@ -9,6 +9,9 @@ const leftArrow = get("leftArrow");
 const rightArrow = get("rightArrow");
 const normalColor = get("normalColor");
 const shinyColor = get("shinyColor");
+const searchButton = get("searchButton");
+const searchbar = get("searchbar");
+const flavorText = get("flavorText");
 
 getNewPokemon(startingUrl);
 
@@ -28,6 +31,24 @@ rightArrow.onclick = function () {
     getNewPokemon(newUrl);
   }
 };
+
+searchButton.onclick = function (e) {
+  e.preventDefault;
+  getPokemonFromSearch();
+};
+searchbar.onkeyup = function (e) {
+  if (e.keyCode === 13) {
+    searchButton.click();
+  }
+};
+
+function getPokemonFromSearch() {
+  if (searchbar.value != "") {
+    let newUrl = baseUrl + searchbar.value;
+    getNewPokemon(newUrl);
+    searchbar.value = "";
+  }
+}
 
 function get(element) {
   return document.getElementById(element);
