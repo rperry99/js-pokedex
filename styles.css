@@ -26,10 +26,15 @@ body {
   padding: 5px;
 }
 
-a:hover {
+a:hover,
+#searchButton {
   cursor: pointer;
 }
 
+#searchButton {
+  outline: none;
+  border: none;
+}
 #search input {
   width: 75%;
   outline: none;
@@ -39,14 +44,14 @@ a:hover {
 #search input::placeholder {
   font-size: 0.8rem;
 }
-#search a {
+#search button {
   width: 25%;
   background: white;
   border: none;
   outline: none;
 }
 #search input,
-#search a {
+#search button {
   height: 25px;
 }
 
