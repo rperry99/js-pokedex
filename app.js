@@ -62,21 +62,24 @@ function setPokemon(mon) {
   pokeImg.src = mon.sprites.front_default;
 
   if (mon.types.length === 2) {
+    resetTypesClass();
     type1.innerHTML = mon.types[1].type.name;
-    type1.className = "";
-    type1.classList.add(`${mon.types[1].type.name}`);
     type2.innerHTML = mon.types[0].type.name;
-    type2.className = "";
+    type1.classList.add(`${mon.types[1].type.name}`);
     type2.classList.add(`${mon.types[0].type.name}`);
     // Type 1 is set as type2 here because the API has the pokemon types backwards.
   } else {
+    resetTypesClass();
     type1.innerHTML = mon.types[0].type.name;
-    type1.className = "";
     type1.classList.add(`${mon.types[0].type.name}`);
     type2.innerHTML = ""; //Resets type 2 since the pokemon only has one type
-    type2.className = "";
     type2.classList.add("hideType");
   }
+}
+
+function resetTypesClass() {
+  type1.className = "";
+  type2.className = "";
 }
 
 function getNewPokemon(url) {
