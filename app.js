@@ -12,6 +12,8 @@ const shinyColor = get("shinyColor");
 const searchButton = get("searchButton");
 const searchbar = get("searchbar");
 const flavorText = get("flavorText");
+const type1 = get("type1");
+const type2 = get("type2");
 
 getNewPokemon(startingUrl);
 
@@ -58,6 +60,14 @@ function setPokemon(mon) {
   pokeNum.innerHTML = "#" + mon.id;
   pokeName.innerHTML = mon.name;
   pokeImg.src = mon.sprites.front_default;
+
+  if (mon.types.length === 2) {
+    type1.innerHTML = mon.types[1].type.name;
+    type2.innerHTML = mon.types[0].type.name;
+  } else {
+    type1.innerHTML = mon.types[0].type.name;
+    type2.innerHTML = ""; //Resets type 2 since the pokemon only has one type
+  }
 }
 
 function getNewPokemon(url) {
