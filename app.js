@@ -1,6 +1,6 @@
 let baseUrl = "https://pokeapi.co/api/v2/pokemon/";
-let startingUrl = baseUrl + "1";
-let currentMonNum;
+let currentMonNum = 1;
+let startingUrl = baseUrl + currentMonNum;
 
 const pokeNum = get("pokeNum");
 const pokeName = get("pokeName");
@@ -91,6 +91,7 @@ function getNewPokemon(url) {
       // Do the thing
       setPokemon(pokemon);
       currentMonNum = pokemon.id;
+      getDexEntry(currentMonNum);
 
       normalColor.onclick = function () {
         pokeImg.src = pokemon.sprites.front_default;
@@ -101,5 +102,24 @@ function getNewPokemon(url) {
     })
     .catch(function (error) {
       console.log("Uh-oh", error);
+    });
+}
+
+function getDexEntry(pokemonNumber) {
+  url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonNumber.toString();
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (pokemon) {
+      for (let i = 0; i < pokemon.flavor_text_entries.length; i++) {
+        if (pokemon.flavor_text_entries[i].language.name === "en") {
+          flavorText.innerHTML = pokemon.flavor_text_entries[i].flavor_text;
+          break;
+        }
+      }
+    })
+    .catch(function (error) {
+      console.log("Uh-Oh", error);
     });
 }
