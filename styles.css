@@ -29,12 +29,12 @@ body {
   border: solid 1px black;
   padding: 5px;
   border-radius: 5px;
-  overflow-y: scroll;
 }
 
 a:hover,
 #searchButton {
   cursor: pointer;
+  user-select: none;
 }
 
 #searchButton {
@@ -282,4 +282,17 @@ img#outsidePokemonSprite {
   width: 100%;
   transform: translate(40%, 40%);
   overflow: hidden;
+}
+
+@media (max-width: 426px) {
+  #pokedex {
+    width: 95%;
+    padding: 10px;
+  }
+}
+@media (min-width: 427px) {
+  #pokedex {
+    width: 40%;
+    padding: 10px;
+  }
 }
