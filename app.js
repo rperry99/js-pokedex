@@ -14,6 +14,8 @@ const searchbar = get("searchbar");
 const flavorText = get("flavorText");
 const type1 = get("type1");
 const type2 = get("type2");
+const outsidePokemonName = get("outsidePokemonName");
+const outsidePokemonSprite = get("outsidePokemonSprite");
 
 getNewPokemon(startingUrl);
 
@@ -60,6 +62,8 @@ function setPokemon(mon) {
   pokeNum.innerHTML = "#" + mon.id;
   pokeName.innerHTML = mon.name;
   pokeImg.src = mon.sprites.front_default;
+  outsidePokemonSprite.src = mon.sprites.front_default;
+  outsidePokemonName.innerHTML = mon.name;
 
   if (mon.types.length === 2) {
     resetTypesClass();
@@ -95,9 +99,11 @@ function getNewPokemon(url) {
 
       normalColor.onclick = function () {
         pokeImg.src = pokemon.sprites.front_default;
+        outsidePokemonSprite.src = pokemon.sprites.front_default;
       };
       shinyColor.onclick = function () {
         pokeImg.src = pokemon.sprites.front_shiny;
+        outsidePokemonSprite.src = pokemon.sprites.front_shiny;
       };
     })
     .catch(function (error) {

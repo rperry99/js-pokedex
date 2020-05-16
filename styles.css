@@ -10,7 +10,10 @@
 
 body {
   height: 100vh;
+  width: 100vw;
   color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .center {
@@ -21,10 +24,12 @@ body {
 
 #pokedex {
   width: 25%;
+  height: 95vh;
   background: red;
   border: solid 1px black;
   padding: 5px;
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
 a:hover,
@@ -254,4 +259,27 @@ a:hover,
 
 span.hideType {
   display: none !important;
+}
+
+body {
+  position: relative;
+}
+#outsidePokemonName {
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.15;
+  font-size: 4.5rem;
+  z-index: -1;
+}
+img#outsidePokemonSprite {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.25;
+  width: 100%;
+  transform: translate(40%, 40%);
+  overflow: hidden;
 }
