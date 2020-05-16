@@ -1,6 +1,7 @@
 let baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 let currentMonNum = 1;
 let startingUrl = baseUrl + currentMonNum;
+let currentMonName;
 
 const pokeNum = get("pokeNum");
 const pokeName = get("pokeName");
@@ -16,6 +17,7 @@ const type1 = get("type1");
 const type2 = get("type2");
 const outsidePokemonName = get("outsidePokemonName");
 const outsidePokemonSprite = get("outsidePokemonSprite");
+const errorBox = get("errorBox");
 
 getNewPokemon(startingUrl);
 
@@ -23,7 +25,6 @@ leftArrow.onclick = function () {
   if (currentMonNum > 1) {
     currentMonNum--;
     let newUrl = baseUrl + currentMonNum.toString();
-    console.log(newUrl);
     getNewPokemon(newUrl);
   }
 };
@@ -31,7 +32,6 @@ rightArrow.onclick = function () {
   if (currentMonNum < 807) {
     currentMonNum++;
     let newUrl = baseUrl + currentMonNum.toString();
-    console.log(newUrl);
     getNewPokemon(newUrl);
   }
 };
@@ -48,8 +48,9 @@ searchbar.onkeyup = function (e) {
 
 function getPokemonFromSearch() {
   if (searchbar.value != "") {
-    let newUrl = baseUrl + searchbar.value;
+    let newUrl = baseUrl + searchbar.value.toLowerCase();
     getNewPokemon(newUrl);
+    currentMonName = searchbar.value;
     searchbar.value = "";
   }
 }
@@ -93,6 +94,7 @@ function getNewPokemon(url) {
     })
     .then(function (pokemon) {
       // Do the thing
+      errorBox.style = "opacity: 0";
       setPokemon(pokemon);
       currentMonNum = pokemon.id;
       getDexEntry(currentMonNum);
@@ -107,6 +109,8 @@ function getNewPokemon(url) {
       };
     })
     .catch(function (error) {
+      errorBox.style = "opacity: 1";
+      errorBox.innerHTML = `Sorry, ${currentMonName} is not a Pokemon. Did you spell it wrong?`;
       console.log("Uh-oh", error);
     });
 }
