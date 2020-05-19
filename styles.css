@@ -48,17 +48,18 @@ a:hover,
   padding-left: 5px;
 }
 #search input::placeholder {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 #search button {
   width: 25%;
   background: white;
   border: none;
   outline: none;
+  font-size: 2rem;
 }
 #search input,
 #search button {
-  height: 25px;
+  height: 50px;
 }
 
 #topControls {
@@ -70,11 +71,12 @@ a:hover,
   height: 100%;
   background: rgb(248, 64, 64);
   padding: 4px 0;
+  font-size: 1.5rem;
 }
 #topControls .color {
   width: 30%;
   border: solid 1px black;
-  font-size: 0.7rem;
+  font-size: 1.5rem;
   padding: 5px 0;
   color: black;
 }
@@ -88,26 +90,32 @@ a:hover,
 
 #pokeImgContainer {
   background: white;
-  height: 100px;
+  height: 200px;
 }
 #pokeImg {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 
 #nameNumber {
   text-align: center;
 }
 #pokeName {
+  font-size: 1.75rem;
   text-transform: capitalize;
+}
+#pokeNum {
+  font-size: 1.75rem;
 }
 
 #types {
-  text-align: center;
-  text-transform: capitalize;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  text-transform: capitalize;
+  width: 50% !important;
+  text-align: center;
+  margin: 0 auto;
 }
 
 #nameNumber,
@@ -118,16 +126,16 @@ a:hover,
   width: 100%;
 }
 
-#flavorText {
-  font-size: 0.6rem;
-}
-
 #type1,
 #type2 {
   border-radius: 5px;
-  /* padding: 2px 5px; */
-  width: 100%;
+  font-size: 1.25rem;
+  width: 100px;
   color: black;
+}
+
+#flavorText {
+  font-size: 1.5rem;
 }
 
 .normal {
