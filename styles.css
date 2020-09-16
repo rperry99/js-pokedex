@@ -1,11 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap');
+
+:root {
+  /* Pokedex Color */
+  --pokedex-red: #ee1515;
+  /* Border Radius */
+  --radius: 5px;
+}
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  color: black !important;
 }
 
 body {
@@ -306,6 +314,76 @@ img#outsidePokemonSprite {
   border-radius: 5px;
   padding: 1rem;
 }
+
+/* New Modal Styles */
+body {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 500px;
+  border: solid 5px var(--pokedex-red);
+  border-radius: var(--radius);
+  z-index: 5000;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.close {
+  font-weight: bold;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.name-number {
+  text-align: center;
+  width: 100%;
+}
+.name-number .name {
+  font-size: 40px;
+}
+.name-number .number {
+  font-size: 25px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.types {
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  width: 65%;
+}
+
+.types div {
+  height: 30px;
+  width: 90px;
+  background: blue;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius);
+}
+
+/* End New Modal Styles */
 
 @media (max-width: 426px) {
   #pokedex {

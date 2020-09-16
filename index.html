@@ -6,8 +6,8 @@
     <title>JS Pokedex</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="center">
-    <div id="outsidePokemonName"></div>
+  <body>
+    <!-- <div id="outsidePokemonName"></div>
     <img id="outsidePokemonSprite" />
     <div id="pokedex">
       <div id="search" class="center">
@@ -33,7 +33,42 @@
       <p id="flavorText">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, quas.
       </p>
+    </div> -->
+    <div class="modal">
+      <!-- Close Button -->
+      <p class="close" title="Close">X</p>
+      <!-- Pokemon Name & Number-->
+      <div class="name-number">
+        <span class="name">Sneasel</span>
+        <span class="number">#215</span>
+      </div>
+      <!-- Container for Regular and Shiny Sprites -->
+      <div class="image-container">
+        <div class="regular-sprite">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
+            alt="Regular Sprite"
+          />
+        </div>
+        <div class="shiny-sprite">
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
+            alt="Shiny Sprite"
+          />
+        </div>
+      </div>
+      <!-- Container for Pokemon Types -->
+      <div class="types">
+        <div class="type1">Electric</div>
+        <div class="type2">Fighting</div>
+      </div>
+      <!-- Pokemon Description -->
+      <p class="description">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
+        blanditiis reprehenderit quasi impedit! Nam excepturi quae voluptates
+        officiis commodi quisquam!
+      </p>
     </div>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
   </body>
 </html>
