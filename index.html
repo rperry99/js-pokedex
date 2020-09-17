@@ -39,8 +39,8 @@
       <p class="close" title="Close">X</p>
       <!-- Pokemon Name & Number-->
       <div class="name-number">
-        <span class="name">Sneasel</span>
-        <span class="number">#215</span>
+        <span class="name" id="pokeName">Sneasel</span>
+        <span class="number" id="pokeNum">#215</span>
       </div>
       <!-- Container for Regular and Shiny Sprites -->
       <div class="image-container">
@@ -48,27 +48,29 @@
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
             alt="Regular Sprite"
+            id="regSprite"
           />
         </div>
         <div class="shiny-sprite">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
             alt="Shiny Sprite"
+            id="shinySprite"
           />
         </div>
       </div>
       <!-- Container for Pokemon Types -->
       <div class="types">
-        <div class="type1">Electric</div>
-        <div class="type2">Fighting</div>
+        <div class="type1" id="type1">Electric</div>
+        <div class="type2" id="type2">Fighting</div>
       </div>
       <!-- Pokemon Description -->
-      <p class="description">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
+      <span class="flavor" id="flavorText">
+        Lorem ispansum dolor sit amet consectetur, adipisicing elit. Mollitia
         blanditiis reprehenderit quasi impedit! Nam excepturi quae voluptates
         officiis commodi quisquam!
-      </p>
+      </span>
     </div>
-    <!-- <script src="app.js"></script> -->
+    <script src="app.js"></script>
   </body>
 </html>

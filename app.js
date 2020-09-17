@@ -1,135 +1,90 @@
-let baseUrl = "https://pokeapi.co/api/v2/pokemon/";
-let currentMonNum = 1;
-let startingUrl = baseUrl + currentMonNum;
-let currentMonName;
+// API Url
+let pokemon = 'alakazam';
+let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
-const pokeNum = get("pokeNum");
-const pokeName = get("pokeName");
-const pokeImg = get("pokeImg");
-const leftArrow = get("leftArrow");
-const rightArrow = get("rightArrow");
-const normalColor = get("normalColor");
-const shinyColor = get("shinyColor");
-const searchButton = get("searchButton");
-const searchbar = get("searchbar");
-const flavorText = get("flavorText");
-const type1 = get("type1");
-const type2 = get("type2");
-const outsidePokemonName = get("outsidePokemonName");
-const outsidePokemonSprite = get("outsidePokemonSprite");
-const errorBox = get("errorBox");
+// Elements for the pop-up modal
+const pokeNum = get('pokeNum');
+const pokeName = get('pokeName');
+const regularSprite = get('regSprite');
+const shinySprite = get('shinySprite');
+const type1 = get('type1');
+const type2 = get('type2');
+const flavorText = get('flavorText');
 
-getNewPokemon(startingUrl);
+// Variable for the current pokemon's ID
+let currentPokemon;
 
-leftArrow.onclick = function () {
-  if (currentMonNum > 1) {
-    currentMonNum--;
-    let newUrl = baseUrl + currentMonNum.toString();
-    getNewPokemon(newUrl);
-  }
-};
-rightArrow.onclick = function () {
-  if (currentMonNum < 807) {
-    currentMonNum++;
-    let newUrl = baseUrl + currentMonNum.toString();
-    getNewPokemon(newUrl);
-  }
-};
-
-searchButton.onclick = function (e) {
-  e.preventDefault;
-  getPokemonFromSearch();
-};
-searchbar.onkeyup = function (e) {
-  if (e.keyCode === 13) {
-    searchButton.click();
-  }
-};
-
-function getPokemonFromSearch() {
-  if (searchbar.value != "") {
-    let newUrl = baseUrl + searchbar.value.toLowerCase();
-    getNewPokemon(newUrl);
-    currentMonName = searchbar.value;
-    searchbar.value = "";
-  }
-}
-
+// Function to quickly get elements
 function get(element) {
   return document.getElementById(element);
 }
 
+// Function to set the pokemon information in the modal
 function setPokemon(mon) {
-  pokeNum.innerHTML = "#" + mon.id;
-  pokeName.innerHTML = mon.name;
-  pokeImg.src = mon.sprites.front_default;
-  outsidePokemonSprite.src = mon.sprites.front_default;
-  outsidePokemonName.innerHTML = mon.name;
-
+  pokeNum.innerText = `#${mon.id}`;
+  currentPokemon = mon.id;
+  pokeName.innerText = mon.name;
+  regularSprite.src = mon.sprites.front_default;
+  shinySprite.src = mon.sprites.front_shiny;
+  // Reset the class for the types so a new type class can be added
+  type1.className = '';
+  type2.className = '';
+  // Set Type 1's name and color
+  type1.innerText = mon.types[0].type.name;
+  type1.classList.add(`${mon.types[0].type.name}`);
+  // If the pokemon has 2 types, set type 2's name and color, if not, remove type 2
   if (mon.types.length === 2) {
-    resetTypesClass();
-    type1.innerHTML = mon.types[1].type.name;
-    type2.innerHTML = mon.types[0].type.name;
-    type1.classList.add(`${mon.types[1].type.name}`);
-    type2.classList.add(`${mon.types[0].type.name}`);
-    // Type 1 is set as type2 here because the API has the pokemon types backwards.
+    type2.innerHTML = mon.types[1].type.name;
+    type2.classList.add(`${mon.types[1].type.name}`);
   } else {
-    resetTypesClass();
-    type1.innerHTML = mon.types[0].type.name;
-    type1.classList.add(`${mon.types[0].type.name}`);
-    type2.innerHTML = ""; //Resets type 2 since the pokemon only has one type
-    type2.classList.add("hideType");
+    type2.innerHTML = '';
+    type2.classList.add('hideType');
   }
 }
 
-function resetTypesClass() {
-  type1.className = "";
-  type2.className = "";
-}
-
-function getNewPokemon(url) {
-  fetch(url)
+// Displays a new pokemon to the user
+function getNewPokemon(pokemon) {
+  let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+  fetch(pokeApiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (pokemon) {
-      // Do the thing
-      errorBox.style = "opacity: 0";
       setPokemon(pokemon);
-      currentMonNum = pokemon.id;
-      getDexEntry(currentMonNum);
-
-      normalColor.onclick = function () {
-        pokeImg.src = pokemon.sprites.front_default;
-        outsidePokemonSprite.src = pokemon.sprites.front_default;
-      };
-      shinyColor.onclick = function () {
-        pokeImg.src = pokemon.sprites.front_shiny;
-        outsidePokemonSprite.src = pokemon.sprites.front_shiny;
-      };
+      getDexEntry(currentPokemon);
     })
     .catch(function (error) {
-      errorBox.style = "opacity: 1";
-      errorBox.innerHTML = `Sorry, ${currentMonName} is not a Pokemon. Did you spell it wrong?`;
-      console.log("Uh-oh", error);
+      console.log('Uh-oh', error);
     });
 }
 
 function getDexEntry(pokemonNumber) {
-  url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonNumber.toString();
-  fetch(url)
+  let dexEntryUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonNumber}`;
+  fetch(dexEntryUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (pokemon) {
       for (let i = 0; i < pokemon.flavor_text_entries.length; i++) {
-        if (pokemon.flavor_text_entries[i].language.name === "en") {
-          flavorText.innerHTML = pokemon.flavor_text_entries[i].flavor_text;
+        if (pokemon.flavor_text_entries[i].language.name === 'en') {
+          let flavor = `${pokemon.flavor_text_entries[i].flavor_text}`;
+          let finalFlavor;
+
+          // For some reason, in the API, there is a random arrow in the text, thjis removes it.
+          if (flavor.includes('')) {
+            finalFlavor = flavor.replace('', ' ');
+          }
+
+          // Sets the flavor text
+          flavorText.innerText = finalFlavor; // Bug here
           break;
         }
       }
     })
     .catch(function (error) {
-      console.log("Uh-Oh", error);
+      console.log('Uh-Oh', error);
     });
 }
+
+// Temporary; Change the string in here to see a different pokemon
+getNewPokemon('ivysaur');
