@@ -3,6 +3,8 @@ let pokemon = 'alakazam';
 let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
 // Elements for the pop-up modal
+const body = document.body;
+const modal = get('modalContainer');
 const pokeNum = get('pokeNum');
 const pokeName = get('pokeName');
 const regularSprite = get('regSprite');
@@ -40,6 +42,8 @@ function setPokemon(mon) {
     type2.innerHTML = '';
     type2.classList.add('hideType');
   }
+  // Get the dex entry
+  getDexEntry(mon.id);
 }
 
 // Displays a new pokemon to the user
@@ -51,7 +55,6 @@ function getNewPokemon(pokemon) {
     })
     .then(function (pokemon) {
       setPokemon(pokemon);
-      getDexEntry(currentPokemon);
     })
     .catch(function (error) {
       console.log('Uh-oh', error);
@@ -86,5 +89,15 @@ function getDexEntry(pokemonNumber) {
     });
 }
 
+// Function to close the modal
+function closeModal() {
+  modal.classList.add('hideType');
+
+  // Temporary; so the modal pops back up without needing a refresh
+  setTimeout(() => {
+    modal.classList.remove('hideType');
+  }, 1000);
+}
+
 // Temporary; Change the string in here to see a different pokemon
-getNewPokemon('ivysaur');
+getNewPokemon('300');
