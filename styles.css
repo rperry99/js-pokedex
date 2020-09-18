@@ -3,8 +3,12 @@
 :root {
   /* Pokedex Color */
   --pokedex-red: #ee1515;
+  --pokedex-black: #222224;
+  --pokedex-white: #f0f0f0;
   /* Border Radius */
   --radius: 5px;
+  /* padding for search bar */
+  --search-padding: 20px;
 }
 
 * {
@@ -13,7 +17,7 @@
   box-sizing: border-box;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  color: black !important;
+  color: var(--pokedex-black);
 }
 
 body {
@@ -23,6 +27,62 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+/* Main Page Styles */
+.title {
+  color: var(--pokedex-red);
+  font-size: 50px;
+  text-align: center;
+  font-style: italic;
+}
+
+.tagline {
+  color: #333;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pokedex-link {
+  text-decoration: none;
+  color: var(--pokedex-red);
+}
+
+.pokedex-link:hover {
+  border-bottom: solid 2px var(--pokedex-red);
+}
+
+.searchbar {
+  position: relative;
+}
+
+.searchbar i {
+  color: var(--pokedex-black);
+  position: absolute;
+  right: var(--search-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: var(--pokedex-white);
+  border-top: solid 10px var(--pokedex-red);
+  border-bottom: solid 10px var(--pokedex-black);
+  background: var(--pokedex-white);
+  color: white;
+  height: 50px;
+  width: 100%;
+  padding: 0 var(--search-padding);
+  margin: 10px 0;
+}
+input::placeholder {
+  color: var(--pokedex-black);
+}
+/* End Main Page Styles */
 
 /* New Modal Styles */
 .modal {
@@ -84,12 +144,12 @@ body {
   display: flex;
   justify-content: space-around;
   align-self: center;
-  width: 65%;
+  width: 75%;
 }
 
 .types div {
   height: 30px;
-  width: 90px;
+  width: 125px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +162,6 @@ body {
 .flavor {
   width: 100%;
 }
-
 /* End New Modal Styles */
 
 /* Type Background Colors */
@@ -232,6 +291,7 @@ body {
     rgba(214, 133, 173, 1) 100%
   );
 }
+/* End type background colors */
 
 .hideType {
   display: none !important;
