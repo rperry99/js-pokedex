@@ -101,6 +101,7 @@ input::placeholder {
   justify-content: space-around;
   align-items: flex-start;
   flex-direction: column;
+  background: white;
 }
 
 .close {
@@ -299,15 +300,11 @@ input::placeholder {
 
 /* Media Queries */
 
-@media (max-width: 426px) {
-  #pokedex {
+@media (max-width: 600px) {
+  .modal {
     width: 95%;
-    padding: 10px;
   }
-}
-@media (min-width: 427px) {
-  #pokedex {
-    width: 40%;
-    padding: 10px;
+  .types {
+    width: 90%;
   }
 }
