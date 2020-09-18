@@ -100,4 +100,4 @@ function closeModal() {
 }
 
 // Temporary; Change the string in here to see a different pokemon
-getNewPokemon('300');
+getNewPokemon('delphox');
