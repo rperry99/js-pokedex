@@ -26,6 +26,7 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 /* Main Page Styles */
@@ -164,6 +165,46 @@ input::placeholder {
   width: 100%;
 }
 /* End New Modal Styles */
+
+/* Pokemon Tiles */
+.tile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 95%;
+  min-height: 100vh;
+  margin: 10px auto;
+}
+
+.tile {
+  background: var(--pokedex-white);
+  border-radius: var(--radius);
+  margin: 5px;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.tile img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: auto;
+}
+
+.tile p {
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 /* Type Background Colors */
 .normal {

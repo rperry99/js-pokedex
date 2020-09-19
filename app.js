@@ -2,6 +2,10 @@
 let pokemon = 'alakazam';
 let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
+// Elements for the main page
+const tileContainer = get('tileContainer');
+let numToShow = 25;
+
 // Elements for the pop-up modal
 const body = document.body;
 const modal = get('modalContainer');
@@ -19,6 +23,44 @@ let currentPokemon;
 // Function to quickly get elements
 function get(element) {
   return document.getElementById(element);
+}
+
+// Function to create pokemon tile
+function createTile(mon) {
+  // Create the card element
+  const tile = document.createElement('div');
+  tile.classList.add('tile');
+  tile.setAttribute('title', `${mon.name}`);
+
+  const image = document.createElement('img');
+  image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${mon.id}.png`;
+  image.alt = mon.name;
+
+  const name = document.createElement('p');
+  name.innerText = mon.name;
+
+  // Append
+  tile.appendChild(image);
+  tile.appendChild(name);
+  tileContainer.appendChild(tile);
+}
+
+// Function generate tiles
+function generateTiles(num) {
+  tileContainer.innerHtml = '';
+  for (let i = 1; i <= num; i++) {
+    let api = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    fetch(api)
+      .then((response) => {
+        return response.json();
+      })
+      .then((pokemon) => {
+        createTile(pokemon);
+      })
+      .catch(function (error) {
+        console.log('Uh-oh', error);
+      });
+  }
 }
 
 // Function to set the pokemon information in the modal
@@ -44,6 +86,9 @@ function setPokemon(mon) {
   }
   // Get the dex entry
   getDexEntry(mon.id);
+
+  // Unhide modal;
+  modal.classList.remove('hideType');
 }
 
 // Displays a new pokemon to the user
@@ -92,12 +137,7 @@ function getDexEntry(pokemonNumber) {
 // Function to close the modal
 function closeModal() {
   modal.classList.add('hideType');
-
-  // Temporary; so the modal pops back up without needing a refresh
-  setTimeout(() => {
-    modal.classList.remove('hideType');
-  }, 1000);
 }
 
 // Temporary; Change the string in here to see a different pokemon
-getNewPokemon('delphox');
+generateTiles(numToShow);
