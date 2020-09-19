@@ -11,22 +11,24 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1 class="title">The Dex</h1>
-    <p class="tagline">
-      A very simple website to use the
-      <a href="https://pokeapi.co/" class="pokedex-link">POKEAPI</a>. Look for
-      your favorite Pokemon!
-    </p>
+    <div class="header-content">
+      <h1 class="title">The Dex</h1>
+      <p class="tagline">
+        A very simple website to use the
+        <a href="https://pokeapi.co/" class="pokedex-link">POKEAPI</a>. Look for
+        your favorite Pokemon!
+      </p>
 
-    <!-- Search bar -->
-    <div class="searchbar">
-      <input
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Find a Pokemon!"
-      />
-      <i class="fa fa-search"></i>
+      <!-- Search bar -->
+      <!-- <div class="searchbar">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Find a Pokemon!"
+        />
+        <i class="fa fa-search"></i>
+      </div> -->
     </div>
 
     <!-- Tile Container -->
@@ -38,37 +40,25 @@
       <p class="close" title="Close" onclick="closeModal()">X</p>
       <!-- Pokemon Name & Number-->
       <div class="name-number">
-        <span class="name" id="pokeName">Sneasel</span>
-        <span class="number" id="pokeNum">#215</span>
+        <span class="name" id="pokeName"></span>
+        <span class="number" id="pokeNum"></span>
       </div>
       <!-- Container for Regular and Shiny Sprites -->
       <div class="image-container">
         <div class="regular-sprite">
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
-            alt="Regular Sprite"
-            id="regSprite"
-          />
+          <img alt="Regular Sprite" id="regSprite" />
         </div>
         <div class="shiny-sprite">
-          <img
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/215.png"
-            alt="Shiny Sprite"
-            id="shinySprite"
-          />
+          <img alt="Shiny Sprite" id="shinySprite" />
         </div>
       </div>
       <!-- Container for Pokemon Types -->
       <div class="types">
-        <div class="type1" id="type1">Electric</div>
-        <div class="type2" id="type2">Fighting</div>
+        <div class="type1" id="type1"></div>
+        <div class="type2" id="type2"></div>
       </div>
       <!-- Pokemon Description -->
-      <span class="flavor" id="flavorText">
-        Lorem ispansum dolor sit amet consectetur, adipisicing elit. Mollitia
-        blanditiis reprehenderit quasi impedit! Nam excepturi quae voluptates
-        officiis commodi quisquam!
-      </span>
+      <span class="flavor" id="flavorText"></span>
     </div>
     <script src="app.js"></script>
   </body>

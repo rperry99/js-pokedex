@@ -30,6 +30,15 @@ body {
 }
 
 /* Main Page Styles */
+.header-content {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 500;
+  background: white;
+  padding: 15px 0;
+}
+
 .title {
   color: var(--pokedex-red);
   font-size: 50px;
@@ -87,7 +96,7 @@ input::placeholder {
 
 /* New Modal Styles */
 .modal {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -175,18 +184,25 @@ input::placeholder {
   width: 95%;
   min-height: 100vh;
   margin: 10px auto;
+  padding-top: 175px;
 }
 
 .tile {
   background: var(--pokedex-white);
   border-radius: var(--radius);
-  margin: 5px;
+  margin: 10px 5px;
   text-align: center;
   padding: 10px;
   font-weight: bold;
   width: 200px;
   height: 200px;
   position: relative;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.tile:hover {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .tile img {

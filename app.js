@@ -4,7 +4,7 @@ let pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 
 // Elements for the main page
 const tileContainer = get('tileContainer');
-let numToShow = 25;
+let numToShow = 151;
 
 // Elements for the pop-up modal
 const body = document.body;
