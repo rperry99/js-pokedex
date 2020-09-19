@@ -31,6 +31,7 @@ function createTile(mon) {
   const tile = document.createElement('div');
   tile.classList.add('tile');
   tile.setAttribute('title', `${mon.name}`);
+  tile.onclick = (e) => getNewPokemon(mon.name);
 
   const image = document.createElement('img');
   image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${mon.id}.png`;
@@ -55,6 +56,7 @@ function generateTiles(num) {
         return response.json();
       })
       .then((pokemon) => {
+        console.log(pokemon);
         createTile(pokemon);
       })
       .catch(function (error) {
